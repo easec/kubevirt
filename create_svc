@@ -1,0 +1,17 @@
+kubectl create -f - <<EOF
+apiVersion: v1
+kind: Service
+metadata:
+  name: vmi-cirros-ssh-svc
+  namespace: kv-policy-demo
+spec:
+  ports:
+  - name: crrios-ssh-svc
+    nodePort: 30000
+    port: 27017
+    protocol: TCP
+    targetPort: 22
+  selector:
+    special: l-vmi-cirros
+  type: NodePort
+EOF
