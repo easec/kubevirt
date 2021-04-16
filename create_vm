@@ -1,0 +1,23 @@
+kubectl create -f - <<EOF
+apiVersion: kubevirt.io/v1alpha3
+kind: VirtualMachineInstance
+metadata:
+  name: vmi-cirros
+  namespace: kv-policy-demo
+  labels:
+    special: l-vmi-cirros
+spec:
+  domain:
+    devices:
+      disks:
+      - disk:
+          bus: virtio
+        name: containerdisk
+    resources:
+      requests:
+        memory: 64M
+  volumes:
+  - name: containerdisk
+    containerDisk:
+      image: kubevirt/cirros-registry-disk-demo:latest
+EOF
