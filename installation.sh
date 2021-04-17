@@ -1,4 +1,4 @@
-sudp apt-get install jq
+sudo apt-get install jq
 
 export KUBEVIRT_VERSION=$(curl -s https://api.github.com/repos/kubevirt/kubevirt/releases/latest | jq -r .tag_name)
 echo $KUBEVIRT_VERSION
